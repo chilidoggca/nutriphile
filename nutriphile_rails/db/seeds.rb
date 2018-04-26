@@ -48,7 +48,7 @@ end
 nutrient_names = NutrientName.all
 puts Cowsay.say("Create #{nutrient_names.count} NutrientNames", :ghostbusters)
 
-CSV.foreach("public/cnf-fcen-csv/NUTRIENTAMOUNT.csv").first(10).with_index(1) do |row, line|
+CSV.foreach("public/cnf-fcen-csv/NUTRIENTAMOUNT.csv").with_index(1) do |row, line|
   unless line == 1
     NutrientAmount.create(
       "#{NutrientAmount.column_names[1]}": row[0],
