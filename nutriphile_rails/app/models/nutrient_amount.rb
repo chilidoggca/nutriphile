@@ -1,0 +1,2 @@
+class NutrientAmount < ApplicationRecord
+end
