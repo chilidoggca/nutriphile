@@ -33,6 +33,7 @@
 #
 #       puts columns
 #       ActiveRecord::Generators::ModelGenerator columns
+#       # Rails::Generators.invoke 'active_record:model', columns
 #     end
 # end
 
