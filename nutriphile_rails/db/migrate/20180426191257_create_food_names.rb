@@ -2,7 +2,7 @@ class CreateFoodNames < ActiveRecord::Migration[5.1]
   def change
     create_table :food_names do |t|
       t.integer :food_id
-      t.integer, :food_code
+      t.integer :food_code
       t.integer :food_group_id
       t.integer :food_source_id
       t.string :food_description
