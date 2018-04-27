@@ -15,13 +15,13 @@ ActiveRecord::Schema.define(version: 20180427200459) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "food_names", force: :cascade do |t|
+  create_table "foods", force: :cascade do |t|
     t.integer "food_number"
     t.integer "food_code"
     t.integer "food_group_id"
     t.integer "food_source_id"
-    t.string "food_description"
-    t.string "food_description_f"
+    t.string "food_name"
+    t.string "food_name_f"
     t.date "food_date_of_entry"
     t.date "food_date_of_publication"
     t.integer "country_code"
@@ -59,13 +59,16 @@ ActiveRecord::Schema.define(version: 20180427200459) do
     t.integer "nutrient_number"
     t.bigint "nutrient_name_id"
     t.bigint "nutrient_amount_id"
+    t.bigint "food_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["food_id"], name: "index_nutrients_on_food_id"
     t.index ["nutrient_amount_id"], name: "index_nutrients_on_nutrient_amount_id"
     t.index ["nutrient_name_id"], name: "index_nutrients_on_nutrient_name_id"
     t.index ["nutrient_number"], name: "index_nutrients_on_nutrient_number"
   end
 
+  add_foreign_key "nutrients", "foods"
   add_foreign_key "nutrients", "nutrient_amounts"
   add_foreign_key "nutrients", "nutrient_names"
 end

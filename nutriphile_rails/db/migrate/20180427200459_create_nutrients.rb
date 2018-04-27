@@ -4,6 +4,7 @@ class CreateNutrients < ActiveRecord::Migration[5.1]
       t.integer :nutrient_number, index: true
       t.references :nutrient_name, foreign_key: true
       t.references :nutrient_amount, foreign_key: true
+      t.references :food, foreign_key: true
 
       t.timestamps
     end

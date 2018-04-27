@@ -6,29 +6,29 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'csv'
-FoodName.destroy_all
+Food.destroy_all
 NutrientName.destroy_all
 NutrientAmount.destroy_all
 Nutrient.destroy_all
 CSV.foreach("public/cnf-fcen-csv/FOODNAME.csv").with_index(1) do |row, line|
   unless line == 1
-    FoodName.create(
-      "#{FoodName.column_names[1]}": row[0],
-      "#{FoodName.column_names[2]}": row[1],
-      "#{FoodName.column_names[3]}": row[2],
-      "#{FoodName.column_names[4]}": row[3],
-      "#{FoodName.column_names[5]}": row[4],
-      "#{FoodName.column_names[6]}": row[5],
-      "#{FoodName.column_names[7]}": row[6],
-      "#{FoodName.column_names[8]}": row[7],
-      "#{FoodName.column_names[9]}": row[8],
-      "#{FoodName.column_names[10]}": row[9]
+    Food.create(
+      "#{Food.column_names[1]}": row[0],
+      "#{Food.column_names[2]}": row[1],
+      "#{Food.column_names[3]}": row[2],
+      "#{Food.column_names[4]}": row[3],
+      "#{Food.column_names[5]}": row[4],
+      "#{Food.column_names[6]}": row[5],
+      "#{Food.column_names[7]}": row[6],
+      "#{Food.column_names[8]}": row[7],
+      "#{Food.column_names[9]}": row[8],
+      "#{Food.column_names[10]}": row[9]
     )
   end
 end
 
-food_names = FoodName.all
-puts Cowsay.say("Create #{food_names.count} foodNames", :tux)
+foods = Food.all
+puts Cowsay.say("Create #{foods.count} Foods", :tux)
 
 CSV.foreach("public/cnf-fcen-csv/NUTRIENTNAME.csv").with_index(1) do |row, line|
   unless line == 1
