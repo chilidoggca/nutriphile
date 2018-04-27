@@ -14,7 +14,7 @@ class FoodNamesController < ApplicationController
   end
 
   def show
-    @nutrients_amounts = NutrientAmount.where(food_id: @food.food_id)
+    @nutrients_amounts = NutrientAmount.where(food_number: @food.food_number)
     @nutrient_names = NutrientAmount.get_nutrient_name(@nutrients_amounts.ids)
   end
 
@@ -24,7 +24,7 @@ class FoodNamesController < ApplicationController
     end
 
     def food_params
-      params.require(:food_name).permit(:food_id, :food_code, :food_group_id, :food_source_id,
+      params.require(:food_name).permit(:food_number, :food_code, :food_group_id, :food_source_id,
         :food_description, :food_description_f, :food_date_of_entry, :food_date_of_publication,
         :country_code, :scientific_name
       )

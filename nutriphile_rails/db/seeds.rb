@@ -9,7 +9,7 @@ require 'csv'
 FoodName.destroy_all
 NutrientName.destroy_all
 NutrientAmount.destroy_all
-
+Nutrient.destroy_all
 CSV.foreach("public/cnf-fcen-csv/FOODNAME.csv").with_index(1) do |row, line|
   unless line == 1
     FoodName.create(
@@ -48,7 +48,7 @@ end
 nutrient_names = NutrientName.all
 puts Cowsay.say("Create #{nutrient_names.count} NutrientNames", :ghostbusters)
 
-CSV.foreach("public/cnf-fcen-csv/NUTRIENTAMOUNT.csv").with_index(1) do |row, line|
+CSV.foreach("public/cnf-fcen-csv/NUTRIENTAMOUNT2.csv").with_index(1) do |row, line|
   unless line == 1
     NutrientAmount.create(
       "#{NutrientAmount.column_names[1]}": row[0],
@@ -64,3 +64,12 @@ end
 
 nutrient_amounts = NutrientAmount.all
 puts Cowsay.say("Create #{nutrient_amounts.count} NUTRIENTAMOUNTS", :moose)
+
+nutrient_amounts.each do |n_a|
+  n_n = NutrientName.find_by(nutrient_number: n_a.nutrient_number)
+  Nutrient.create(
+    nutrient_number: n_n.nutrient_number,
+    nutrient_name_id: n_n.id,
+    nutrient_amount_id: n_a.id
+  )
+end
