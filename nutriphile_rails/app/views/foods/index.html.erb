@@ -1,4 +1,4 @@
-<%= form_for :food_name, method: :get, url: food_names_path, class: "form-horizontal" do |f| %>
+<%= form_for :food, method: :get, url: foods_path, class: "form-horizontal" do |f| %>
   <fieldset class="row">
     <div class="col-xs-8">
       <%= f.text_field :search_food_name, class: "form-control form-horizontal", placeholder: "Search by name" %>
@@ -10,5 +10,5 @@
 <% end %>
 
 <% @food_names.each do |each_food| %>
-  <p><%= each_food.food_description %></p>
+  <p><%= link_to each_food.food_name, food_path(each_food) %></p>
 <% end %>

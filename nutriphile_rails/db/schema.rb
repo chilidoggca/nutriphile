@@ -10,18 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180426192216) do
+ActiveRecord::Schema.define(version: 20180427200459) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "food_names", force: :cascade do |t|
-    t.integer "food_id"
+  create_table "foods", force: :cascade do |t|
+    t.integer "food_number"
     t.integer "food_code"
     t.integer "food_group_id"
     t.integer "food_source_id"
-    t.string "food_description"
-    t.string "food_description_f"
+    t.string "food_name"
+    t.string "food_name_f"
     t.date "food_date_of_entry"
     t.date "food_date_of_publication"
     t.integer "country_code"
@@ -31,8 +31,8 @@ ActiveRecord::Schema.define(version: 20180426192216) do
   end
 
   create_table "nutrient_amounts", force: :cascade do |t|
-    t.integer "food_id"
-    t.integer "nutrient_id"
+    t.integer "food_number"
+    t.integer "nutrient_number"
     t.float "nutrient_value"
     t.integer "standard_error"
     t.integer "number_of_observations"
@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 20180426192216) do
   end
 
   create_table "nutrient_names", force: :cascade do |t|
-    t.integer "nutrient_id"
+    t.integer "nutrient_number"
     t.integer "nutrient_code"
     t.string "nutrient_symbol"
     t.string "nutrient_unit"
@@ -55,4 +55,20 @@ ActiveRecord::Schema.define(version: 20180426192216) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "nutrients", force: :cascade do |t|
+    t.integer "nutrient_number"
+    t.bigint "nutrient_name_id"
+    t.bigint "nutrient_amount_id"
+    t.bigint "food_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["food_id"], name: "index_nutrients_on_food_id"
+    t.index ["nutrient_amount_id"], name: "index_nutrients_on_nutrient_amount_id"
+    t.index ["nutrient_name_id"], name: "index_nutrients_on_nutrient_name_id"
+    t.index ["nutrient_number"], name: "index_nutrients_on_nutrient_number"
+  end
+
+  add_foreign_key "nutrients", "foods"
+  add_foreign_key "nutrients", "nutrient_amounts"
+  add_foreign_key "nutrients", "nutrient_names"
 end

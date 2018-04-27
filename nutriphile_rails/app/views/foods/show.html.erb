@@ -1,0 +1,8 @@
+<p>Food Show page!</p>
+
+<h1><%= @food.food_name%></h1>
+
+<% @nutrients.each do |nutrient| %>
+  <p><%= nutrient.nutrient_name.nutrient_name %> : <%= nutrient.nutrient_amount.nutrient_value%></p>
+
+<% end %>
