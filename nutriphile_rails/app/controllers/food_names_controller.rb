@@ -1,5 +1,5 @@
 class FoodNamesController < ApplicationController
-  # before_action :set_food, only: [:index, :create, :edit, :update]
+  before_action :set_food, only: [:show]
   # before_action :food_params, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -14,12 +14,13 @@ class FoodNamesController < ApplicationController
   end
 
   def show
-
+    @nutrients_amounts = NutrientAmount.where(food_id: @food.food_id)
+    @nutrient_names = NutrientAmount.get_nutrient_name(@nutrients_amounts.ids)
   end
 
   private
     def set_food
-      @food = FoodName.find(params[:food_id])
+      @food = FoodName.find(params[:id])
     end
 
     def food_params

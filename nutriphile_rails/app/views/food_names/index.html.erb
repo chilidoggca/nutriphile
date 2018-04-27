@@ -10,5 +10,5 @@
 <% end %>
 
 <% @food_names.each do |each_food| %>
-  <p><%= each_food.food_description %></p>
+  <p><%= link_to each_food.food_description, food_name_path(each_food) %></p>
 <% end %>

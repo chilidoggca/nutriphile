@@ -9,4 +9,8 @@ class FoodName < ApplicationRecord
   scope :get_food_info, -> (food_description) {
     where("food_description Ilike ?", "%#{food_description}%")
   }
+
+
+
+
 end
