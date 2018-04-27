@@ -63,4 +63,4 @@ CSV.foreach("public/cnf-fcen-csv/NUTRIENTAMOUNT.csv").with_index(1) do |row, lin
 end
 
 nutrient_amounts = NutrientAmount.all
-puts Cowsay.say("Create #{nutrient_amounts.count} NUTRIENTAMOUNTS", :t)
+puts Cowsay.say("Create #{nutrient_amounts.count} NUTRIENTAMOUNTS", :moose)

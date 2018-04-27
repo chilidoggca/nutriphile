@@ -1,0 +1,14 @@
+<%= form_for :food_name, method: :get, url: food_names_path, class: "form-horizontal" do |f| %>
+  <fieldset class="row">
+    <div class="col-xs-8">
+      <%= f.text_field :search_food_name, class: "form-control form-horizontal", placeholder: "Search by name" %>
+    </div>
+    <div class="col-xs-4">
+      <%= f.submit 'Search by name', class: "btn btn-primary" %>
+    </div>
+  </fieldset>
+<% end %>
+
+<% @food_names.each do |each_food| %>
+  <p><%= each_food.food_description %></p>
+<% end %>
