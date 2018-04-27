@@ -2,11 +2,7 @@
 
 <h1><%= @food.food_name%></h1>
 
-<%# @nutrients_amounts.each do |amount| %>
-  <!-- <p><%#= amount.nutrient_value %></p> -->
-<%# end %>
+<% @nutrients.each do |nutrient| %>
+  <p><%= nutrient.nutrient_name.nutrient_name %> : <%= nutrient.nutrient_amount.nutrient_value%></p>
 
-
-<%# @nutrient_names.each do |name| %>
-  <p><%#= name.nutrient_name %></p>
-<%# end %>
+<% end %>

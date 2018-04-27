@@ -67,9 +67,14 @@ puts Cowsay.say("Create #{nutrient_amounts.count} NUTRIENTAMOUNTS", :moose)
 
 nutrient_amounts.each do |n_a|
   n_n = NutrientName.find_by(nutrient_number: n_a.nutrient_number)
+  food = Food.find_by(food_number: n_a.food_number)
   Nutrient.create(
     nutrient_number: n_n.nutrient_number,
     nutrient_name_id: n_n.id,
-    nutrient_amount_id: n_a.id
+    nutrient_amount_id: n_a.id,
+    food_id: food.id
   )
 end
+
+nutrients = Nutrient.all
+puts Cowsay.say("Create #{nutrients.count} nutrients", :moose)

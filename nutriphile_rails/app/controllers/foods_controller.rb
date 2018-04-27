@@ -3,19 +3,17 @@ class FoodsController < ApplicationController
   # before_action :food_params, only: [:show, :edit, :update, :destroy]
 
   def index
-    food_name_keyword = params[:food_name]
+    food_name_keyword = params[:food]
     if food_name_keyword
       search_food_name = food_name_keyword["search_food_name"]
       @food_names = Food.get_food_info(search_food_name)
-      puts @food_names.count
     else
       @food_names = Food.all
     end
   end
 
   def show
-    @nutrients_amounts = NutrientAmount.where(food_number: @food.food_number)
-    # @nutrient_names = NutrientAmount.get_nutrient_name(@nutrients_amounts.ids)
+    @nutrients = Nutrient.where(food_id: @food.id)
   end
 
   private
@@ -24,7 +22,7 @@ class FoodsController < ApplicationController
     end
 
     def food_params
-      params.require(:food_name).permit(:food_number, :food_code, :food_group_id, :food_source_id,
+      params.require(:food).permit(:food_number, :food_code, :food_group_id, :food_source_id,
         :food_description, :food_description_f, :food_date_of_entry, :food_date_of_publication,
         :country_code, :scientific_name
       )
