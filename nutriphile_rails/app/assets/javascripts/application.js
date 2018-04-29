@@ -10,5 +10,7 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require moment
+//= require fullcalendar
 //= require rails-ujs
 //= require_tree .
