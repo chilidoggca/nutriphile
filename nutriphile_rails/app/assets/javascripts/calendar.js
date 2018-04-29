@@ -1,1 +1,3 @@
-$('#calendar').fullCalendar({});
+
+$('#calendar').fullCalendar({
+});
