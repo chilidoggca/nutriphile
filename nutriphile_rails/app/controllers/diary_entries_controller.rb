@@ -4,7 +4,7 @@ class DiaryEntriesController < ApplicationController
   # GET /diary_entries
   # GET /diary_entries.json
   def index
-    @diary_entries = DiaryEntry.all
+    @diary_entries = current_user.diary_entries.all
   end
 
   # GET /diary_entries/1
