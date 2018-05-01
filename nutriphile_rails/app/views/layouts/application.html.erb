@@ -10,16 +10,50 @@
 
   <body>
     <div class="navbar-fixed">
-      <nav>
+      <nav class="nav-extended">
         <div class="nav-wrapper">
-          <%=link_to 'Nutriphile', root_path, class: 'brand-logo' %>
+          <%=link_to 'Nutriphile', root_path, class: 'brand-logo center' %>
           <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <li><%=link_to 'Diary' %></li>
-            <li><%=link_to 'Food Reference', foods_path %></li>
-            <li><%=link_to 'Activity' %></li>
+            <li>
+              <a href="<%=root_path%>" class="tooltipped" data-position="bottom" data-tooltip="Diary">
+                Diary
+              </a>
+            </li>
+            <li>
+              <a href="<%=foods_path%>" class="tooltipped" data-position="bottom" data-tooltip="Food Reference">
+                Food Reference
+              </a>
+            </li>
+            <li>
+              <a href="<%=root_path%>" class="tooltipped" data-position="bottom" data-tooltip="Activity">
+                Activity
+              </a>
+            </li>
           </ul>
         </div>
         <!-- <a id="menu" class="waves-effect waves-light btn btn-floating" ><%= fa_icon('bars')%></a> -->
+        <div class="nav-content hide-on-large-only">
+          <ul class="tabs tabs-transparent">
+            <li class="tab">
+              <a href="<%=root_path%>" class="tooltipped" data-position="bottom" data-tooltip="Diary">
+                <i class="fa fa-calendar fa-2x"></i><br />
+                Diary
+              </a>
+            </li>
+            <li class="tab">
+              <a href="<%=foods_path%>" class="tooltipped" data-position="bottom" data-tooltip="Food Reference">
+                <i class="fa fa-cutlery fa-2x"></i><br />
+                Reference
+              </a>
+            </li>
+            <li class="tab">
+              <a href="<%=root_path%>" class="tooltipped" data-position="bottom" data-tooltip="Activity">
+                <i class="fa fa-heartbeat fa-2x"></i><br />
+                Activity
+              </a>
+            </li>
+          </ul>
+        </div>
       </nav>
     </div>
     <%= yield %>
