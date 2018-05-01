@@ -14,4 +14,16 @@
  *= require_self
  */
 
+@import "font-awesome";
+@import "materialize/components/color-variables";
+$primary-color: color("deep-purple", "lighten-1") !default;
+$secondary-color: color("amber", "accent-4") !default;
 @import "materialize";
+
+.primary {
+  background: $primary-color;
+}
+
+.secondary {
+  background: $secondary-color;
+}
