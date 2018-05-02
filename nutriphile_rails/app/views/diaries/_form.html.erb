@@ -1,0 +1,37 @@
+<%= form_with(model: diary, local: true) do |form| %>
+  <% if diary.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(diary.errors.count, "error") %> prohibited this diary from being saved:</h2>
+
+      <ul>
+      <% diary.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :diary_date %>
+    <%= form.date_select :diary_date, id: :diary_diary_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :meal_type %>
+    <%= form.text_field :meal_type, id: :diary_meal_type %>
+  </div>
+
+  <div class="field">
+    <%= form.label :food_name %>
+    <%= form.text_field :food_name, id: :diary_food_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :user_id %>
+    <%= form.text_field :user_id, id: :diary_user_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
