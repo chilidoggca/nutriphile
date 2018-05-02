@@ -9,6 +9,55 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div class="navbar-fixed">
+      <nav class="nav-extended">
+        <div class="nav-wrapper">
+          <%=link_to 'Nutriphile', root_path, class: 'brand-logo center' %>
+          <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li>
+              <a href="<%=root_path%>" class="tooltipped" data-position="bottom" data-tooltip="Diary">
+                Diary
+              </a>
+            </li>
+            <li>
+              <a href="<%=foods_path%>" class="tooltipped" data-position="bottom" data-tooltip="Food Reference">
+                Food Reference
+              </a>
+            </li>
+            <li>
+              <a href="<%=root_path%>" class="tooltipped" data-position="bottom" data-tooltip="Activity">
+                Activity
+              </a>
+            </li>
+          </ul>
+        </div>
+        <!-- <a id="menu" class="waves-effect waves-light btn btn-floating" ><%= fa_icon('bars')%></a> -->
+        <div class="nav-content hide-on-large-only">
+          <ul class="tabs">
+            <li class="tab">
+              <a href="<%=root_path%>" class="tooltipped" data-position="bottom" data-tooltip="Diary">
+                <div class="tab-icon"><i class="fa fa-calendar fa-2x"></i></div>
+                <div class="tab-name">Diary</div>
+              </a>
+            </li>
+            <li class="tab">
+              <a href="<%=foods_path%>" class="tooltipped" data-position="bottom" data-tooltip="Food Reference">
+                <div class="tab-icon"><i class="fa fa-cutlery fa-2x"></i></div>
+                <div class="tab-name">Reference</div>
+              </a>
+            </li>
+            <li class="tab">
+              <a href="<%=root_path%>" class="tooltipped" data-position="bottom" data-tooltip="Activity">
+                <div class="tab-icon"><i class="fa fa-heartbeat fa-2x"></i></div>
+                <div class="tab-name">Activity</div>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <div class="yield-div">
+      <%= yield %>
+    </div>
   </body>
 </html>

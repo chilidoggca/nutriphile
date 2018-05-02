@@ -1,13 +1,17 @@
-<%= form_for :food, method: :get, url: foods_path, class: "form-horizontal" do |f| %>
-  <fieldset class="row">
-    <div class="col-xs-8">
-      <%= f.text_field :search_food_name, class: "form-control form-horizontal", placeholder: "Search by name" %>
+<div class="row">
+  <%= form_for :food, method: :get, class: 'col s12', url: foods_path do |f| %>
+    <div class="row">
+      <div class="input-field col s12">
+        <%= f.text_field :search_food_name, class: "validate", placeholder: 'Search food name' %>
+      </div>
+      <div class="col s12">
+        <%= f.button :submit, class: 'btn waves-effect waves-light' do %>
+          <%= fa_icon('search 1x') %> Search
+        <% end %>
+      </div>
     </div>
-    <div class="col-xs-4">
-      <%= f.submit 'Search by name', class: "btn btn-primary" %>
-    </div>
-  </fieldset>
-<% end %>
+  <% end %>
+</div>
 
 <% @food_names.each do |each_food| %>
   <p><%= link_to each_food.food_name, food_path(each_food) %></p>
