@@ -27,3 +27,30 @@ $secondary-color: color("amber", "accent-4") !default;
 .secondary {
   background: $secondary-color;
 }
+
+nav {
+  letter-spacing: 1px;
+  .tabs {
+    height: 55px;
+    line-height: 55px;
+    .tab {
+      height: 55px;
+      line-height: 55px;
+      .tab-icon {
+        height: 35px;
+        line-height: 50px;
+      }
+      .tab-name {
+        height: 20px;
+        line-height: 20px;
+        font-size: 12px;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width : 992px) {
+  .yield-div {
+    padding-top: 55px;
+  }
+}
