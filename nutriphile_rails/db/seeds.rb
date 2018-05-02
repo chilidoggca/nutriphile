@@ -6,10 +6,13 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'csv'
+Nutrient.destroy_all
 Food.destroy_all
 NutrientName.destroy_all
 NutrientAmount.destroy_all
-Nutrient.destroy_all
+User.destroy_all
+Diary.destroy_all
+
 CSV.foreach("public/cnf-fcen-csv/FOODNAME.csv").with_index(1) do |row, line|
   unless line == 1
     Food.create(
@@ -78,3 +81,26 @@ end
 
 nutrients = Nutrient.all
 puts Cowsay.say("Create #{nutrients.count} nutrients", :moose)
+
+
+PASSWORD = '123456'
+test_user = User.create(
+  email: 't@t.t',
+  password: PASSWORD,
+  password_confirmation: PASSWORD
+)
+
+rand(1..100).times.each do
+  meal_type_arr = ['Breakfast', 'Lunch', 'Dinner']
+  Diary.create(
+    diary_date: Date.current - rand(1..20),
+    meal_type: meal_type_arr.sample,
+    food_name: foods.sample.food_name,
+    amount: rand(1..30),
+    user_id: test_user.id
+  )
+end
+
+
+diaries = Diary.all
+puts Cowsay.say("Create #{diaries.count} diaries", :moose)

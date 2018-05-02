@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
   root to: "foods#index"
+
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  # devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }, :path => 'accounts'
+  resources :users do
+    resources :diaries, shallow: true
+  end
+
   resources :foods
+
 end

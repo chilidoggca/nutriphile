@@ -1,0 +1,13 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Diary Entries</h1>
+
+<% @diary_entries.each do |entry| %>
+  <p><%= entry.diary_date %></p>
+<% end %>
+
+<div id="calendar" style="width:100%;height:100%">
+  calendar
+</div>
+
+<%= javascript_include_tag 'calendar' %>
