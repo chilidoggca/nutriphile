@@ -30,13 +30,14 @@ gem 'jbuilder', '~> 2.5'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-gem 'cowsay', '~> 0.3.0'
 gem 'devise'
 gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
 gem 'jquery-rails'
 gem "font-awesome-rails"
 gem 'materialize-sass', '~> 1.0.0.beta'
+gem 'fullcalendar-rails'
+gem 'momentjs-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -45,6 +46,7 @@ group :development, :test do
   gem 'pry-doc'
   gem 'pry-rails'
   gem 'hirb'
+  gem 'cowsay', '~> 0.3.0'
 end
 
 group :development do
