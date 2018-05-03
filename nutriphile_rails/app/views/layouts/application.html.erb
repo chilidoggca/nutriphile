@@ -13,7 +13,7 @@
     <div class="navbar-fixed">
       <nav class="nav-extended">
         <div class="nav-wrapper">
-          <%=link_to raw('<img src="nutriphile-logo.gif" alt="Nutriphile" class="nutriphile-logo">'), root_path, class: 'brand-logo', style: 'padding: 0px 10px' %>
+          <%=link_to raw('<img src="/nutriphile-logo.gif" alt="Nutriphile" class="nutriphile-logo">'), root_path, class: 'brand-logo', style: 'padding: 0px 10px' %>
           <ul id="nav-mobile" class="right hide-on-med-and-down">
             <li>
               <a href="<%= current_user ? user_diaries_path(current_user) : new_user_session_path %>" class="tooltipped" data-position="bottom" data-tooltip="Diary">
