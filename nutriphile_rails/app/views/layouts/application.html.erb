@@ -36,7 +36,7 @@
                 </a>
                 <!-- Dropdown Structure -->
                 <ul id="dropdown1" class="dropdown-content" style="min-width: 200px; overflow: none;">
-                  <li><%= current_user.email %></li>
+                  <li class="not-anchor"><%= current_user.email %></li>
                   <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
                 </ul>
               <% else %>

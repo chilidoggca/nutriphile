@@ -50,6 +50,12 @@ nav {
   }
 }
 
+#dropdown1 .not-anchor {
+  padding: 14px 16px;
+  pointer-events: none;
+  cursor: default;
+}
+
 @media only screen and (max-width : 992px) {
   .yield-div {
     padding-top: 55px;
