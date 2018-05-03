@@ -1,6 +1,17 @@
 
 <h1> <%= @date_param %></h1>
 <% @date_entries.each do |item| %>
-  <p><%= item.food_name%></p>
-  <p> <%= item.amount%></p>
+  <p>
+    <%= link_to item.food_name, diary_path(item)%>
+    <span>XXX KCAL</span>
+    <span>
+      <%= link_to( 'Delete',
+          diary_path(item),
+          method: :delete,
+          data: {confirm: 'Are your sure?'}
+          )
+      %>
+    </span>
+  </p>
+
 <% end %>

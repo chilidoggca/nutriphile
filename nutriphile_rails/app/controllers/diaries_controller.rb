@@ -15,12 +15,13 @@ class DiariesController < ApplicationController
   # GET /diaries/1
   # GET /diaries/1.json
   def show
-    render json: @diary
   end
 
   def date
     @date_param = params[:calendar_date]
-    @date_entries = current_user.diaries.where(diary_date: @date_param.to_date)
+    if @date_param
+      @date_entries = current_user.diaries.where(diary_date: @date_param.to_date)
+    end
   end
 
   # GET /diary_entries/new
@@ -63,13 +64,9 @@ class DiariesController < ApplicationController
   end
 
   # DELETE /diary_entries/1
-  # DELETE /diary_entries/1.json
   def destroy
     @diary.destroy
-    respond_to do |format|
-      format.html { redirect_to diary_entries_url, notice: 'Diary entry was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to date_path(:calendar_date => @diary.diary_date)
   end
 
   private
