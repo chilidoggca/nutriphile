@@ -1,12 +1,8 @@
-
-// $('#calendar').fullCalendar({
-//   events: `/users/${tripIdCalendar}/diaries.json`,
-// });
-
-
-
-// const tripIdCalendar = $('#calendar').data('tripid');
-// $('#calendar').fullCalendar({
-//   events: `/trips/${tripIdCalendar}/routes.json`,
-//   defaultDate: $('#calendar').data('startdate')
-// });
+var userIdCalendar = $('#calendar').data('userid');
+$('#calendar').fullCalendar({
+  events: `/users/${userIdCalendar}/diaries.json`,
+  dayClick: function(date, jsEvent, view) {
+    window.location.href =
+      `http://localhost:3000/date?utf8=&calendar_date=${date.format()}`
+  }
+});
