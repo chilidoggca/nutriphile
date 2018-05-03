@@ -27,5 +27,10 @@ module NutriphileRails
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+
+    # Disable factory_bot from automatically substituting fixtures
+    config.generators do |g|
+      g.factory_bot false
+    end
   end
 end

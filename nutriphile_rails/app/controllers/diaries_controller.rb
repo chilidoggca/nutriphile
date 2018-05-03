@@ -25,7 +25,7 @@ class DiariesController < ApplicationController
 
   # GET /diary_entries/new
   def new
-    @diary = DiaryEntry.new
+    @diary = Diary.new
   end
 
   # GET /diary_entries/1/edit
@@ -35,7 +35,7 @@ class DiariesController < ApplicationController
   # POST /diary_entries
   # POST /diary_entries.json
   def create
-    @diary = DiaryEntry.new(diary_params)
+    @diary = Diary.new(diary_params)
 
     respond_to do |format|
       if @diary.save
