@@ -14,7 +14,7 @@ Diary.destroy_all
 User.destroy_all
 
 
-CSV.foreach("public/cnf-fcen-csv/FOODNAME.csv").with_index(1) do |row, line|
+CSV.foreach("public/cnf-fcen-csv/FOODNAME.csv", encoding: "ISO8859-1:utf-8").with_index(1) do |row, line|
   unless line == 1
     Food.create(
       "#{Food.column_names[1]}": row[0],
@@ -34,7 +34,7 @@ end
 foods = Food.all
 puts Cowsay.say("Create #{foods.count} Foods", :tux)
 
-CSV.foreach("public/cnf-fcen-csv/NUTRIENTNAME.csv").with_index(1) do |row, line|
+CSV.foreach("public/cnf-fcen-csv/NUTRIENTNAME.csv", encoding: "ISO8859-1:utf-8").with_index(1) do |row, line|
   unless line == 1
     NutrientName.create(
       "#{NutrientName.column_names[1]}": row[0],
@@ -52,7 +52,7 @@ end
 nutrient_names = NutrientName.all
 puts Cowsay.say("Create #{nutrient_names.count} NutrientNames", :ghostbusters)
 
-CSV.foreach("public/cnf-fcen-csv/NUTRIENTAMOUNT2.csv").with_index(1) do |row, line|
+CSV.foreach("public/cnf-fcen-csv/NUTRIENTAMOUNT2.csv", encoding: "ISO8859-1:utf-8").with_index(1) do |row, line|
   unless line == 1
     NutrientAmount.create(
       "#{NutrientAmount.column_names[1]}": row[0],

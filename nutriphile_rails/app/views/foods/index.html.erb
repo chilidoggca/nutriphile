@@ -13,6 +13,10 @@
   <% end %>
 </div>
 
-<% @food_names.each do |each_food| %>
-  <p><%= link_to each_food.food_name, food_path(each_food) %></p>
-<% end %>
+<div class="row">
+  <div class="col s12">
+    <% @food_names.each do |each_food| %>
+      <p><%= link_to each_food.food_name, food_path(each_food) %></p>
+    <% end %>
+  </div>
+</div>
