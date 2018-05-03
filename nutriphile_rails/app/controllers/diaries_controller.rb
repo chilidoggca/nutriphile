@@ -1,5 +1,6 @@
 class DiariesController < ApplicationController
-  before_action :set_diary, only: [:show, :edit, :update, :destroy]
+  # before_action :authenticate_user!
+  before_action :authenticate_user!, :set_diary, only: [:show, :edit, :update, :destroy]
 
   # GET /diary_entries
   # GET /diary_entries.json

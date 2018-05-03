@@ -12,10 +12,10 @@
     <div class="navbar-fixed">
       <nav class="nav-extended">
         <div class="nav-wrapper">
-          <%=link_to 'Nutriphile', root_path, class: 'brand-logo center' %>
+          <%=link_to 'Nutriphile', root_path, class: 'brand-logo', style: 'padding: 0px 10px' %>
           <ul id="nav-mobile" class="right hide-on-med-and-down">
             <li>
-              <a href="<%=root_path%>" class="tooltipped" data-position="bottom" data-tooltip="Diary">
+              <a href="<%= current_user ? user_diaries_path(current_user) : new_user_session_path %>" class="tooltipped" data-position="bottom" data-tooltip="Diary">
                 Diary
               </a>
             </li>
@@ -29,13 +29,30 @@
                 Activity
               </a>
             </li>
+            <li>
+              <% if current_user %>
+                <a href="#!" class="dropdown-trigger" data-target="dropdown1">
+                  <%= fa_icon('user-circle 2x') %> <%= fa_icon('caret-down') %>
+                </a>
+                <!-- Dropdown Structure -->
+                <ul id="dropdown1" class="dropdown-content" style="min-width: 200px; overflow: none;">
+                  <li><%= current_user.email %></li>
+                  <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
+                </ul>
+              <% else %>
+                <a href="<%=new_user_session_path%>" class="btn tooltipped" data-position="bottom" data-tooltip="Get Started">
+                  Get Started
+                </a>
+              <% end %>
+            </li>
           </ul>
         </div>
         <!-- <a id="menu" class="waves-effect waves-light btn btn-floating" ><%= fa_icon('bars')%></a> -->
+        <!-- Tab Bar -->
         <div class="nav-content hide-on-large-only">
           <ul class="tabs">
             <li class="tab">
-              <a href="<%=root_path%>" class="tooltipped" data-position="bottom" data-tooltip="Diary">
+              <a href="<%= current_user ? user_diaries_path(current_user) : new_user_session_path %>" class="tooltipped" data-position="bottom" data-tooltip="Diary">
                 <div class="tab-icon"><i class="fa fa-calendar fa-2x"></i></div>
                 <div class="tab-name">Diary</div>
               </a>

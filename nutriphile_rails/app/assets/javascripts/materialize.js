@@ -1,3 +1,6 @@
 $(document).ready(function(){
-  $('.tooltipped').tooltip();
+  $(".tooltipped").tooltip();
+  $(".dropdown-trigger").dropdown(
+    // hover: true
+  );
 });
