@@ -2,11 +2,10 @@
 
 <h1>Diary Entries</h1>
 
-<% @diary_entries.each do |entry| %>
-  <p><%= entry.diary_date %></p>
-<% end %>
+<%# @diary_entries.each do |entry| %>
+<%# end %>
 
-<div id="calendar" style="width:100%;height:100%">
+<div id="calendar" style="width:100%;height:100%" data-userid="<%= current_user.id %>">
   calendar
 </div>
 

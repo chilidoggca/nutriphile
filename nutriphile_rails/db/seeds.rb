@@ -10,8 +10,9 @@ Nutrient.destroy_all
 Food.destroy_all
 NutrientName.destroy_all
 NutrientAmount.destroy_all
-User.destroy_all
 Diary.destroy_all
+User.destroy_all
+
 
 CSV.foreach("public/cnf-fcen-csv/FOODNAME.csv").with_index(1) do |row, line|
   unless line == 1
@@ -90,7 +91,7 @@ test_user = User.create(
   password_confirmation: PASSWORD
 )
 
-rand(1..100).times.each do
+rand(50..100).times.each do
   meal_type_arr = ['Breakfast', 'Lunch', 'Dinner']
   Diary.create(
     diary_date: Date.current - rand(1..20),
