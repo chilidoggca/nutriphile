@@ -5,14 +5,16 @@ class DiariesController < ApplicationController
   # GET /diary_entries.json
   def index
     @diaries = current_user.diaries.all
+    # render json: @diaries
     respond_to do |format|
-      format.json {@diaries}
-      format.html {render :show}
+      format.html {render :index}
+      format.json { render json: @diaries }
     end
+
   end
 
-  # GET /diary_entries/1
-  # GET /diary_entries/1.json
+  # GET /diaries/1
+  # GET /diaries/1.json
   def show
     render json: @diary
   end
