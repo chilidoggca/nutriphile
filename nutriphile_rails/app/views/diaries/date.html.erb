@@ -1,0 +1,6 @@
+
+<h1> <%= @date_param %></h1>
+<% @date_entries.each do |item| %>
+  <p><%= item.food_name%></p>
+  <p> <%= item.amount%></p>
+<% end %>

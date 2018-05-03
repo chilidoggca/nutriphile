@@ -5,18 +5,21 @@ class DiariesController < ApplicationController
   # GET /diary_entries.json
   def index
     @diaries = current_user.diaries.all
-    # render json: @diaries
     respond_to do |format|
       format.html {render :index}
       format.json { render json: @diaries }
     end
-
   end
 
   # GET /diaries/1
   # GET /diaries/1.json
   def show
     render json: @diary
+  end
+
+  def date
+    @date_param = params[:calendar_date]
+    @date_entries = current_user.diaries.where(diary_date: @date_param.to_date)
   end
 
   # GET /diary_entries/new
