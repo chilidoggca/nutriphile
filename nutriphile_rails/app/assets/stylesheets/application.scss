@@ -31,6 +31,9 @@ $secondary-color: color("amber", "accent-4") !default;
 
 nav {
   letter-spacing: 1px;
+  img.nutriphile-logo {
+    height: 64px;
+  }
   .tabs {
     height: 55px;
     line-height: 55px;
@@ -52,7 +55,7 @@ nav {
 
 #dropdown1 {
   min-width: 200px;
-  overflow: none;  
+  overflow: none;
   .not-anchor {
     padding: 14px 16px;
     pointer-events: none;
@@ -63,5 +66,11 @@ nav {
 @media only screen and (max-width : 992px) {
   .yield-div {
     padding-top: 55px;
+  }
+}
+
+@media only screen and (max-width : 600px) {
+  nav img.nutriphile-logo {
+    height: 56px;
   }
 }
