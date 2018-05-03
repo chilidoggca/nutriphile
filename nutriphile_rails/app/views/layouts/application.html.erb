@@ -31,14 +31,16 @@
             </li>
             <li>
               <% if current_user %>
-                <a href="#!" class="dropdown-trigger" data-target="dropdown1">
-                  <%= fa_icon('user-circle 2x') %> <%= fa_icon('caret-down') %>
+                <a href="#!" class="dropdown-trigger" data-target="dropdown1" style="height: 64px;">
+                  <%= fa_icon('user-circle 2x') %>
+                  <i class="fa fa-caret-down" style="height: 50px;"></i>
                 </a>
-                <!-- Dropdown Structure -->
-                <ul id="dropdown1" class="dropdown-content" style="min-width: 200px; overflow: none;">
-                  <li class="not-anchor"><%= current_user.email %></li>
-                  <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
-                </ul>
+                <!-- Dropdown Structure Start -->
+                  <ul id="dropdown1" class="dropdown-content">
+                    <li class="not-anchor"><%= current_user.email %></li>
+                    <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
+                  </ul>
+                <!-- Dropdown Structure End -->
               <% else %>
                 <a href="<%=new_user_session_path%>" class="btn tooltipped" data-position="bottom" data-tooltip="Get Started">
                   Get Started
@@ -48,29 +50,30 @@
           </ul>
         </div>
         <!-- <a id="menu" class="waves-effect waves-light btn btn-floating" ><%= fa_icon('bars')%></a> -->
-        <!-- Tab Bar -->
-        <div class="nav-content hide-on-large-only">
-          <ul class="tabs">
-            <li class="tab">
-              <a href="<%= current_user ? user_diaries_path(current_user) : new_user_session_path %>" class="tooltipped" data-position="bottom" data-tooltip="Diary">
-                <div class="tab-icon"><i class="fa fa-calendar fa-2x"></i></div>
-                <div class="tab-name">Diary</div>
-              </a>
-            </li>
-            <li class="tab">
-              <a href="<%=foods_path%>" class="tooltipped" data-position="bottom" data-tooltip="Food Reference">
-                <div class="tab-icon"><i class="fa fa-cutlery fa-2x"></i></div>
-                <div class="tab-name">Reference</div>
-              </a>
-            </li>
-            <li class="tab">
-              <a href="<%=root_path%>" class="tooltipped" data-position="bottom" data-tooltip="Activity">
-                <div class="tab-icon"><i class="fa fa-heartbeat fa-2x"></i></div>
-                <div class="tab-name">Activity</div>
-              </a>
-            </li>
-          </ul>
-        </div>
+        <!-- Tab Bar Start -->
+          <div class="nav-content hide-on-large-only">
+            <ul class="tabs">
+              <li class="tab">
+                <a href="<%= current_user ? user_diaries_path(current_user) : new_user_session_path %>" class="tooltipped" data-position="bottom" data-tooltip="Diary">
+                  <div class="tab-icon"><i class="fa fa-calendar fa-2x"></i></div>
+                  <div class="tab-name">Diary</div>
+                </a>
+              </li>
+              <li class="tab">
+                <a href="<%=foods_path%>" class="tooltipped" data-position="bottom" data-tooltip="Food Reference">
+                  <div class="tab-icon"><i class="fa fa-cutlery fa-2x"></i></div>
+                  <div class="tab-name">Reference</div>
+                </a>
+              </li>
+              <li class="tab">
+                <a href="<%=root_path%>" class="tooltipped" data-position="bottom" data-tooltip="Activity">
+                  <div class="tab-icon"><i class="fa fa-heartbeat fa-2x"></i></div>
+                  <div class="tab-name">Activity</div>
+                </a>
+              </li>
+            </ul>
+          </div>
+        <!-- Tab Bar End -->
       </nav>
     </div>
     <div class="yield-div">

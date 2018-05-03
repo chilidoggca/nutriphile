@@ -50,10 +50,14 @@ nav {
   }
 }
 
-#dropdown1 .not-anchor {
-  padding: 14px 16px;
-  pointer-events: none;
-  cursor: default;
+#dropdown1 {
+  min-width: 200px;
+  overflow: none;  
+  .not-anchor {
+    padding: 14px 16px;
+    pointer-events: none;
+    cursor: default;
+  }
 }
 
 @media only screen and (max-width : 992px) {
