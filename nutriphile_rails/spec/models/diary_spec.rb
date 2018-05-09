@@ -99,55 +99,25 @@ RSpec.describe Diary, type: :model do
       expect(d1.price).to_not equal(nil) # due to validation built
     end
 
-    it 'has default sale_price set to price' do
-      user = User.create(first_name: 'Jon', last_name: 'Snow',  email: 'j@s.com', password: 'supersecret')
-      d1 = Diary.create(title: 'unique_title2', description: 'needs to be minimum length', price: 100, user: user)
-      result = d1.sale_price
-      expect(result).to eq(d1.price)
-    end
-
-    it 'has sale_price less than or equal to price' do
-      user = User.create(first_name: 'Jon', last_name: 'Snow',  email: 'j@s.com', password: 'supersecret')
-      d1 = Diary.create(title: 'unique_title2', description: 'needs to be minimum length', price: 100, sale_price: 200, user: user)
-      expect(d1.sale_price).to eq(d1.price)
-    end
-
-    it 'has method called on sale' do
-      user = User.create(first_name: 'Jon', last_name: 'Snow',  email: 'j@s.com', password: 'supersecret')
-      d1 = Diary.create(title: 'unique_title2', description: 'needs to be minimum length', price: 100, sale_price: 80, user: user)
-      expect(d1.on_sale?).to be
-    end
-
-    # Refactor using 'Factory Bot'
-
-    it 'requires a title and price' do
+    it 'saves if all parameters are valid' do
       u1 = FactoryBot.create(:user)
-      d1 = FactoryBot.create(:diary)
-      d1.title = nil
-      d1.price = nil
+      d1 = FactoryBot.build(:diary)
+      expect(d1.save).to eq(true)
+    end
+
+    it 'does not save if missing food name' do
+      u1 = FactoryBot.create(:user)
+      d1 = FactoryBot.build(:diary, food_name: nil)
       d1.valid?
-      expect(d1.errors.messages).to have_key(:title)
-      expect(d1.price).to_not eq(nil) #due to built-in validation
+      expect(d1.save).to eq(false)
+      #what about testing if error message should have key food_name
     end
 
-    it 'has default sale_price set to price if not set' do
+    it 'does not save if missing meal type' do
       u1 = FactoryBot.create(:user)
-      d1 = FactoryBot.create(:diary, sale_price: nil)
-      result = d1.sale_price
-      expect(result).to eq(d1.price)
+      d1 = FactoryBot.build(:diary, meal_type: nil)
+      expect(d1.save).to eq(false)
     end
 
-    it 'has sale_price less than or equal to price' do
-      u1 = FactoryBot.create(:user)
-      d1 = FactoryBot.create(:diary, sale_price: 1000)
-      result = d1.sale_price
-      expect(result).to eq(d1.price)
-    end
-
-    it 'has method called on sale' do
-      u1 = FactoryBot.create(:user)
-      d1 = FactoryBot.create(:diary, price: 100, sale_price: 100)
-      expect(d1.on_sale?).to eq(false)
-    end
   end
 end
